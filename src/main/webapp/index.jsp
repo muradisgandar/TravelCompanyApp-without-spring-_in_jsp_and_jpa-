@@ -35,52 +35,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         
-        <script>
-
-            function myFunction() {
-                alert("Thank you for applying! Your information will be sent our database");
-            }
-
-        </script>
-        
 
     </head>
     <body>
-        <%
-            //load username and password for admin login from loginConfig.properties file
-
-            Map<String, String> map = LoginConfig.getProperties();
-            //next step : authentication process
-            String action = request.getParameter("action");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            if (action != null && !action.isEmpty()) {
-                if ("admin".equals(action)) {
-                    if (username.equals(map.get("username")) && password.equals(map.get("password"))) {
-
-                        response.sendRedirect("adminpage.jsp");
-                    } else {
-                        response.sendRedirect("index.jsp");
-                    }
-
-                } else if ("user".equals(action)) {
-                    if (!username.isEmpty() && !password.isEmpty()) {
-                        response.sendRedirect("userpage.jsp");
-                    }
-                }
-            }
-
-            username = "";
-            password = "";
-
-        %>
         <div class="container">
             <!-- Button to Open the Modal -->
             <!-- The Modal -->
             <div class="modal" id="adminModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="index.jsp" method="POST">
+                        <form action="IndexController" method="POST">
                             <!-- Modal Header -->
                             <div class="modal-header">
                                 <h4 class="modal-title">Admin Login</h4>
@@ -109,7 +73,7 @@
         <div class="modal" id="userModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="index.jsp" method="POST">
+                    <form action="IndexController" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">User Login</h4>

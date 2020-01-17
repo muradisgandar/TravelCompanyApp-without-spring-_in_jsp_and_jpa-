@@ -27,7 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        
+
         <script>
             function getById(id) {
                 document.getElementById("getNameById").value = id;
@@ -63,54 +63,9 @@
         </nav>
 
 
-        <%
-            String action = request.getParameter("action");
-            action = action == null ? "" : action;
-
-            String name = request.getParameter("name");
-            name = name == null ? "" : name;
-
-            String surname = request.getParameter("surname");
-            surname = surname == null ? "" : surname;
-
-            String ageStr = request.getParameter("age");
-            ageStr = ageStr == null ? "" : ageStr;
-            Integer age = 0;
-            if (ageStr != null && !ageStr.isEmpty()) {
-                age = Integer.parseInt(ageStr);
-            }
-
-            String gender = request.getParameter("gender");
-            gender = gender == null ? "" : gender;
-
-            String mail = request.getParameter("mail");
-            mail = mail == null ? "" : mail;
-
-            String number = request.getParameter("number");
-            number = number == null ? "" : number;
-
-            String sId = request.getParameter("id");
-            sId = sId == null ? "" : sId;
-            
-            Integer id = null;
-            if (sId != null && !sId.isEmpty()) {
-                id = Integer.parseInt(sId);
-            }
-
-            Travelpackages t = new Travelpackages(id);
-
-            Users u = new Users(null, name, surname, age, gender, number, mail);
-            u.setTourId(t);
-            if ("add".equals(action)) {
-                UserDB.add(u);
-                response.sendRedirect("userpage.jsp");
-                
-            }
-
-        %>
 
         <div class="row" style="margin-left: 10px">
-            <form class="col-md-3" method="POST">
+            <form class="col-md-3" method="POST" action="UserController">
                 <div class="form-group">
                     <label for="name">Name</label><br>
                     <input type="text" name="name" class="form-control" required="required" placeholder="Name">
@@ -141,7 +96,7 @@
                 <div class="form-group">
                     Other<input type="radio" name="gender" value="Other">
                 </div>
-                <% 
+                <%
                     List<Travelpackages> list = TravelPackagesDB.getAll();
                 %>
 
