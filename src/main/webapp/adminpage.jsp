@@ -45,50 +45,6 @@
     </head>
     <body>
 
-        <%
-            String action = request.getParameter("action");
-
-            String countryName = request.getParameter("name");
-
-            countryName = countryName == "" ? null : countryName;
-            String date = request.getParameter("date");
-
-            date = date == "" ? null : date;
-            String sId = request.getParameter("id");
-            sId = sId == null ? "" : sId;
-
-            Integer id = null;
-            if (sId != null && !sId.isEmpty()) {
-                id = Integer.parseInt(sId);
-            }
-
-            try {
-                if (action != null && !action.isEmpty()) {
-                    if ("add".equals(action)) {
-                        TravelPackagesDB.add(new Travelpackages(null, countryName, date));
-                        TravelPackagesDB.getAll();
-                    } else if ("delete".equals(action)) {
-                        TravelPackagesDB.delete(id);
-                    } else if ("update".equals(action)) {
-                        TravelPackagesDB.update(new Travelpackages(id, countryName, date));
-                    }
-
-                    if (!"search".equals(action)) {
-                        countryName = null;
-                        date = null;
-                        response.sendRedirect("adminpage.jsp");
-                        
-                    }
-                }
-            } catch (Exception e) {
-
-            }
-
-            Travelpackages tr = new Travelpackages(null, countryName, date);
-
-            List<Travelpackages> list = TravelPackagesDB.getAllByParameters(tr);
-
-        %>
 
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="#">
@@ -110,7 +66,7 @@
         <div class="modal" id="delete">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="adminpage.jsp" method="GET">
+                    <form action="AdminController" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Delete</h4>
@@ -137,7 +93,7 @@
         <div class="modal" id="update">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="adminpage.jsp" method="POST">
+                    <form action="AdminController" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Edit</h4>
@@ -174,7 +130,7 @@
         </div>
 
         <div class="row" style="margin-left: 10px">
-            <form class="col-md-3" method="POST">
+            <form class="col-md-3" action="AdminController" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label><br>
                     <input type="text" name="name" class="form-control"  placeholder="Countryname">
@@ -203,9 +159,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% 
-                        for (int i = 0; i < list.size(); i++) {
-                            Travelpackages t = list.get(i);
+                    <%
+                        List<Travelpackages> list = (List<Travelpackages>) request.getAttribute("list");
+
+                        if (list.size()>0) {
+                            for (int i = 0; i < list.size(); i++) {
+                                Travelpackages t = list.get(i);
+
 
                     %>
 
@@ -234,6 +194,7 @@
 
                     </tr>
                     <%
+                            }
                         }
                     %>
                 </tbody>
