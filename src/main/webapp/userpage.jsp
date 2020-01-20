@@ -65,7 +65,7 @@
 
 
         <div class="row" style="margin-left: 10px">
-            <form class="col-md-3" method="POST" action="UserController">
+            <form class="col-md-3" method="POST" action="user">
                 <div class="form-group">
                     <label for="name">Name</label><br>
                     <input type="text" name="name" class="form-control" required="required" placeholder="Name">

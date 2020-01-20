@@ -9,6 +9,7 @@ import databases.UserDB;
 import entities.Travelpackages;
 import entities.Users;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,15 +20,15 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author murad_isgandar
  */
-@WebServlet(name = "UserController", urlPatterns = {"/UserController"})
+@WebServlet(name = "UserController", urlPatterns = {"/user"})
 public class UserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        response.sendRedirect("userpage.jsp");
-        
+
+        RequestDispatcher rd = request.getRequestDispatcher("userpage.jsp");
+        rd.forward(request, response);
 
     }
 
@@ -74,7 +75,7 @@ public class UserController extends HttpServlet {
         u.setTourId(t);
         if ("add".equals(action)) {
             UserDB.add(u);
-            response.sendRedirect("userpage.jsp");
+            response.sendRedirect("user");
 
         }
 

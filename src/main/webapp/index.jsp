@@ -44,7 +44,7 @@
             <div class="modal" id="adminModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="IndexController" method="POST">
+                        <form action="login" method="POST">
                             <!-- Modal Header -->
                             <div class="modal-header">
                                 <h4 class="modal-title">Admin Login</h4>
@@ -73,7 +73,7 @@
         <div class="modal" id="userModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="IndexController" method="POST">
+                    <form action="login" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">User Login</h4>

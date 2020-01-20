@@ -19,15 +19,31 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author murad_isgandar
  */
-@WebServlet(name = "AdminController", urlPatterns = {"/AdminController"})
+@WebServlet(name = "AdminController", urlPatterns = {"/admin"}) 
 public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("vdsvdsgdg");
-        request.setAttribute("list", TravelPackagesDB.getAll());
+        String action = request.getParameter("action");
+
+        String countryName = request.getParameter("name");
+
+        countryName = countryName == "" ? null : countryName;
+        String date = request.getParameter("date");
+
+        date = date == "" ? null : date;
+
+        if (action == null) {
+
+            request.setAttribute("list", TravelPackagesDB.getAll());
+
+        } else if (action.equals("search")) {
+            request.setAttribute("list", TravelPackagesDB.getAllByParameters(new Travelpackages(null, countryName, date)));
+
+        }
+
         RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
         rd.forward(request, response);
 
@@ -64,27 +80,13 @@ public class AdminController extends HttpServlet {
                     TravelPackagesDB.update(new Travelpackages(id, countryName, date));
                 }
 
-//                request.setAttribute("list", TravelPackagesDB.getAll());
-//                RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
-//                rd.forward(request, response);
+                response.sendRedirect("admin");
 
-                response.sendRedirect("AdminController");
-                
             }
         } catch (Exception e) {
 
         }
 
-//        Travelpackages tr = new Travelpackages(null, countryName, date);
-//
-//        List<Travelpackages> list = TravelPackagesDB.getAllByParameters(tr);
-//
-//        if (list.size() > 0) {
-//            request.setAttribute("list", list);
-//        }
-//        request.setAttribute("list", TravelPackagesDB.getAll());
-//        RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
-//        rd.forward(request, response);
     }
 
 }

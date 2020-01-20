@@ -76,7 +76,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="AdminController" method="POST">
+                    <form action="admin" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="name">Name</label><br>
@@ -102,7 +102,7 @@
         <div class="modal" id="delete">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="AdminController" method="POST">
+                    <form action="admin" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Delete</h4>
@@ -129,7 +129,7 @@
         <div class="modal" id="update">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="AdminController" method="POST">
+                    <form action="admin" method="POST">
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Edit</h4>
@@ -166,7 +166,7 @@
         </div>
 
         <div class="row" style="margin-left: 10px">
-            <form class="col-md-3" action="AdminController" method="POST">
+            <form class="col-md-3" action="admin" method="GET">
                 <div class="form-group">
                     <label for="name">Name</label><br>
                     <input type="text" name="name" class="form-control"  placeholder="Countryname">
@@ -195,9 +195,7 @@
                 </thead>
                 <tbody>
                     <%
-//                        List<Travelpackages> list = (List<Travelpackages>) request.getAttribute("list");
-//                        List<Travelpackages> list = TravelPackagesDB.getAll();
-                        List<Travelpackages> list = (List<Travelpackages>)request.getAttribute("list");
+                        List<Travelpackages> list = (List<Travelpackages>) request.getAttribute("list");
 
                         if (list.size() > 0) {
                             for (int i = 0; i < list.size(); i++) {

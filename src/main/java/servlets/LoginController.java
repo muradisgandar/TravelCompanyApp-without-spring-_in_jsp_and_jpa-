@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author murad_isgandar
  */
-@WebServlet(name = "IndexController", urlPatterns = {"/IndexController"})
-public class IndexController extends HttpServlet {
+@WebServlet(name = "LoginController", urlPatterns = {"/login"})
+public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -35,14 +35,14 @@ public class IndexController extends HttpServlet {
             if ("admin".equals(action)) {
                 if (username.equals(map.get("username")) && password.equals(map.get("password"))) {
 
-                    response.sendRedirect("AdminController");
+                    response.sendRedirect("admin");
                 } else {
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("login");
                 }
 
             } else if ("user".equals(action)) {
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    response.sendRedirect("UserController");
+                    response.sendRedirect("user");
                 }
             }
         }
