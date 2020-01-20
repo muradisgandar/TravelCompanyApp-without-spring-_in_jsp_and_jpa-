@@ -26,6 +26,11 @@ public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("vdsvdsgdg");
+        request.setAttribute("list", TravelPackagesDB.getAll());
+        RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
+        rd.forward(request, response);
+
     }
 
     @Override
@@ -50,7 +55,7 @@ public class AdminController extends HttpServlet {
 
         try {
             if (action != null && !action.isEmpty()) {
-                if ("add".equals(action)) {
+                if ("Add".equals(action)) {
                     TravelPackagesDB.add(new Travelpackages(null, countryName, date));
                     TravelPackagesDB.getAll();
                 } else if ("delete".equals(action)) {
@@ -59,17 +64,12 @@ public class AdminController extends HttpServlet {
                     TravelPackagesDB.update(new Travelpackages(id, countryName, date));
                 }
 
-                if (!"search".equals(action)) {
-                    countryName = null;
-                    date = null;
-                    response.sendRedirect("adminpage.jsp");
+//                request.setAttribute("list", TravelPackagesDB.getAll());
+//                RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
+//                rd.forward(request, response);
 
-                }
+                response.sendRedirect("AdminController");
                 
-                //burda problem varrrr!
-                request.setAttribute("list", TravelPackagesDB.getAll());
-                RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
-                rd.forward(request, response);
             }
         } catch (Exception e) {
 
@@ -85,7 +85,6 @@ public class AdminController extends HttpServlet {
 //        request.setAttribute("list", TravelPackagesDB.getAll());
 //        RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
 //        rd.forward(request, response);
-
     }
 
 }

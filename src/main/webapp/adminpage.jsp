@@ -2,7 +2,7 @@
     Document   : adminlogin
     Created on : Sep 15, 2019, 6:06:02 PM
     Author     : murad_isgandar
---%>
+--%>                                                                                                               
 
 <%@page import="entities.Travelpackages"%>
 <%@page import="databases.TravelPackagesDB"%>
@@ -61,6 +61,42 @@
             </div>
 
         </nav>
+
+        <div>
+            <button type="button" style="margin: 10px;" class="btn btn-success" data-toggle="modal" data-target="#insertModal">Add Packet</button>
+        </div>
+
+
+        <div class="modal" tabindex="-1" role="dialog" id="insertModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="AdminController" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name">Name</label><br>
+                                <input type="text" name="name" class="form-control"  placeholder="Countryname">
+                            </div>
+                            <div class="form-group">
+                                <label for="surname">Date</label><br>
+                                <input type="text" name="date" class="form-control"  placeholder="DD-MM-YY">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-success" name="action" value="Add">
+                            <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
         <div class="modal" id="delete">
@@ -140,7 +176,6 @@
                     <input type="text" name="date" class="form-control"  placeholder="DD-MM-YY">
                 </div>
 
-                <button type="submit" class="btn btn-success" name="action" value="add">Add</button>
                 <button type="submit" class="btn btn-success" name="action" value="search">Search</button>
             </form>
         </div>
@@ -160,9 +195,11 @@
                 </thead>
                 <tbody>
                     <%
-                        List<Travelpackages> list = (List<Travelpackages>) request.getAttribute("list");
+//                        List<Travelpackages> list = (List<Travelpackages>) request.getAttribute("list");
+//                        List<Travelpackages> list = TravelPackagesDB.getAll();
+                        List<Travelpackages> list = (List<Travelpackages>)request.getAttribute("list");
 
-                        if (list.size()>0) {
+                        if (list.size() > 0) {
                             for (int i = 0; i < list.size(); i++) {
                                 Travelpackages t = list.get(i);
 

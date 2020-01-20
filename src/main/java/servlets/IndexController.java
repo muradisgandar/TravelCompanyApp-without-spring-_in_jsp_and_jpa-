@@ -35,14 +35,14 @@ public class IndexController extends HttpServlet {
             if ("admin".equals(action)) {
                 if (username.equals(map.get("username")) && password.equals(map.get("password"))) {
 
-                    response.sendRedirect("adminpage.jsp");
+                    response.sendRedirect("AdminController");
                 } else {
                     response.sendRedirect("index.jsp");
                 }
 
             } else if ("user".equals(action)) {
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    response.sendRedirect("userpage.jsp");
+                    response.sendRedirect("UserController");
                 }
             }
         }
