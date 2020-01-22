@@ -22,7 +22,7 @@
         <title>Travel Company</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Murad Isgandarli">
-        
+
         <style>
             body{
                 background: linear-gradient( #7f7fd5, #86a8e7, #91eae4);
@@ -34,74 +34,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        
+
 
     </head>
     <body>
-        <div class="container">
-            <!-- Button to Open the Modal -->
-            <!-- The Modal -->
-            <div class="modal" id="adminModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="login" method="POST">
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Admin Login</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                Username: <input type="text" name="username" placeholder="username" ><br>
-                                Password: <input type="password"  name="password" placeholder="password">
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <input type="hidden" name="action" value="admin"/>
-                                <input type="submit" class="btn btn-success" value="Login">
-                                <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Close">
-                            </div>  
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="modal" id="userModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="login" method="POST">
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">User Login</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Username: <input type="text" name="username" placeholder="username" ><br>
-                            Password: <input type="password"  name="password" placeholder="password">
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <input type="hidden" name="action" value="user"/>
-                            <input type="submit" class="btn btn-success" value="Login">
-                            <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Close">
-                        </div>  
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-info static-top">
             <div class="container">
-                <a class="navbar-brand" href="index.jsp">
+                <a class="navbar-brand" href="home">
                     <img src="index6.jpeg"alt="" style="width: 200px;height: 80px;border-radius: 50%">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,25 +50,14 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.jsp">Home
+                            <a class="nav-link" href="home">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.jsp">Log In
+                            <a class="nav-link" href="login">Log In
                             </a>
                         </li>
-<!--                        <li class="nav-item">
-                            <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#userModal">
-                                Log in
-                            </button>
-                        </li>-->
-<!--                        <li class="nav-item">
-                            <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#adminModal">
-                                Admin
-                            </button>
-                        </li>-->
-
                     </ul>
                 </div>
             </div>

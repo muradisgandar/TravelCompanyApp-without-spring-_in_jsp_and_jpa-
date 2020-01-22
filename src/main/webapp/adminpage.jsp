@@ -48,25 +48,24 @@
 
 
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="admin">
                 <img src="images2.jpeg" style="width:100px; height:60px;border-radius: 10px;"class="d-inline-block align-top"
                      >
             </a>
-            
+
             <div>
                 <%
-                   Map<String,String> admin = (Map) session.getAttribute("loggedInAdmin");
+                    Map<String, String> admin = (Map) session.getAttribute("loggedInAdmin");
                 %>
-                <%="Welcome, "+admin.get("username")%>
-                
+                <%="Welcome, " + admin.get("username")%>
+
             </div>
-            <div class="dropdown">
-                <button style="margin-right:40px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Menu
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="index.jsp">Exit</a>
-                </div>
+            <div>
+                <form action="logout" method="GET" >
+                    <button style="margin-right:40px;" class="btn btn-secondary" type="submit">
+                        Logout
+                    </button>
+                </form>
             </div>
 
         </nav>

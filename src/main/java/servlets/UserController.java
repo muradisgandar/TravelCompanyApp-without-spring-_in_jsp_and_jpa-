@@ -27,8 +27,13 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher rd = request.getRequestDispatcher("userpage.jsp");
-        rd.forward(request, response);
+        if (request.getSession().getAttribute("loggedInUser") != null) {
+            RequestDispatcher rd = request.getRequestDispatcher("userpage.jsp");
+            rd.forward(request, response);
+        }
+        else{
+            response.sendRedirect("login");
+        }
 
     }
 

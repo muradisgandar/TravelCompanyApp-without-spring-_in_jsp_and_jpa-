@@ -55,6 +55,7 @@ public class LoginController extends HttpServlet {
 
             } else if ("user".equals(action)) {
                 if (!username.isEmpty() && !password.isEmpty()) {
+                    request.getSession().setAttribute("loggedInUser","user");
                     response.sendRedirect("user");
                 }
             }

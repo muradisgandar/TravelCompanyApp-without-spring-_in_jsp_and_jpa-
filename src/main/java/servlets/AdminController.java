@@ -19,33 +19,41 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author murad_isgandar
  */
-@WebServlet(name = "AdminController", urlPatterns = {"/admin"}) 
+@WebServlet(name = "AdminController", urlPatterns = {"/admin"})
 public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("action");
+        if (request.getSession().getAttribute("loggedInAdmin") != null) {
 
-        String countryName = request.getParameter("name");
+            String action = request.getParameter("action");
 
-        countryName = countryName == "" ? null : countryName;
-        String date = request.getParameter("date");
+            String countryName = request.getParameter("name");
 
-        date = date == "" ? null : date;
+            countryName = countryName == "" ? null : countryName;
+            String date = request.getParameter("date");
 
-        if (action == null) {
+            date = date == "" ? null : date;
 
-            request.setAttribute("list", TravelPackagesDB.getAll());
+            if (action == null) {
 
-        } else if (action.equals("search")) {
-            request.setAttribute("list", TravelPackagesDB.getAllByParameters(new Travelpackages(null, countryName, date)));
+                request.setAttribute("list", TravelPackagesDB.getAll());
+
+            } else if (action.equals("search")) {
+                request.setAttribute("list", TravelPackagesDB.getAllByParameters(new Travelpackages(null, countryName, date)));
+
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
+            rd.forward(request, response);
 
         }
-
-        RequestDispatcher rd = request.getRequestDispatcher("adminpage.jsp");
-        rd.forward(request, response);
+        else{
+            response.sendRedirect("login");
+            
+        }
 
     }
 
