@@ -115,15 +115,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="login.jsp">Log In
+                            </a>
+                        </li>
+<!--                        <li class="nav-item">
                             <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#userModal">
                                 Log in
                             </button>
-                        </li>
-                        <li class="nav-item">
+                        </li>-->
+<!--                        <li class="nav-item">
                             <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#adminModal">
                                 Admin
                             </button>
-                        </li>
+                        </li>-->
 
                     </ul>
                 </div>

@@ -4,6 +4,7 @@
     Author     : murad_isgandar
 --%>                                                                                                               
 
+<%@page import="java.util.Map"%>
 <%@page import="entities.Travelpackages"%>
 <%@page import="databases.TravelPackagesDB"%>
 <%@page import="java.util.List"%>
@@ -51,6 +52,14 @@
                 <img src="images2.jpeg" style="width:100px; height:60px;border-radius: 10px;"class="d-inline-block align-top"
                      >
             </a>
+            
+            <div>
+                <%
+                   Map<String,String> admin = (Map) session.getAttribute("loggedInAdmin");
+                %>
+                <%="Welcome, "+admin.get("username")%>
+                
+            </div>
             <div class="dropdown">
                 <button style="margin-right:40px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menu

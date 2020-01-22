@@ -35,6 +35,7 @@ public class LoginConfig {
 
             //get the property value and print it out
             result.put("username", prop.getProperty("username"));
+            result.put("email", prop.getProperty("email"));
             result.put("password", prop.getProperty("password"));
 
         } catch (IOException ex) {
