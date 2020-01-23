@@ -12,7 +12,6 @@
   	*JPA(EclipseLink)
     	*JSP
 	*Servlet
-	
 ### Release-1
 * Backend opearations were written in JSP pages and login opearion takes through modals(not any login page)
 
