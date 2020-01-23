@@ -60,12 +60,13 @@
                 <%="Welcome, " + admin.get("username")%>
 
             </div>
-            <div>
-                <form action="logout" method="GET" >
-                    <button style="margin-right:40px;" class="btn btn-secondary" type="submit">
-                        Logout
-                    </button>
-                </form>
+            <div class="dropdown">
+                <button style="margin-right:40px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menu
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="logout">Logout</a>
+                </div>
             </div>
 
         </nav>

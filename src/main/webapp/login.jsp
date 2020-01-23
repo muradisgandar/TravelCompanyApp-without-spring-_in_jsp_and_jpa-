@@ -44,15 +44,36 @@
                 font-weight: bold;
             }
         </style>
+        <script>
+            function validate() {
+
+                var text = document.getElementById("mail").value;
+
+                var regx = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})?$/;
+
+                if (regx.test(text)) {
+
+                    return true;
+                } else {
+                    document.getElementById("lblmail").innerHTML = "Invalid input,please enter email like example@exam.com or example@examp.exam.com";
+                    document.getElementById("lblmail").style.visibility = "visible";
+                    document.getElementById("mail").style.border = "solid 3px red";
+
+                    return false;
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="login-form">
-            <form action="login" method="POST">
+            <form onsubmit="return validate()"  action="login" method="POST">
                 <h2 class="text-center">Log In</h2>   
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" name="email" class="form-control" placeholder="Email" required="required">
+
+                        <input type="text" name="email" id="mail" class="form-control" placeholder="Email" required="required">
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -81,6 +102,7 @@
             </form>
         </div>
         <div class="clearfix">
+            <p id="lblmail" class="text-center big" style="color:red; visibility: hidden;">Invalid</p>
             <p class="text-center big" style="color:red;">${error}</p>
         </div>
     </body>
