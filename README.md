@@ -9,14 +9,14 @@
 
 ### Utilized technologies
 	*Java
-     *JSP
+    *JSP
 	*Servlet
 	*JPA(EclipseLink)
 ### Release-1
-* Backend opearations were written in JSP pages and login opearion takes through modals(not any login page)
+* Backend opearations were written in JSP pages and login operation takes through modals(not any login page)
 
 ### Release-2
-* Backend opearations were written in Servlets seperately from JSP pages and login opearion takes through login page
+* Backend opearations were written in Servlets seperately from JSP pages and login operation takes through login page
 
 ### About me
 * [Facebook](https://www.facebook.com/murad.isgenderli.12)
