@@ -9,7 +9,7 @@
 
 ### Utilized technologies
 	*Java
-    	     *JSP
+  *JSP
 	*Servlet
 	*JPA(EclipseLink)
 ### Release-1
